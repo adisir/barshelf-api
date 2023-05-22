@@ -15,6 +15,7 @@ public class LoginController {
     @Autowired
     BarshelfUserRepository barshelfUserRepository;
 
+    //Register users to BarShelf
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody @Valid BarshelfUser user) {
 
