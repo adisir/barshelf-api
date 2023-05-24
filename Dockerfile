@@ -1,11 +1,5 @@
-FROM eclipse-temurin:17-jdk-jammy
-
-WORKDIR /app
-
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
-RUN ./mvnw dependency:resolve
-
-COPY src ./src
-
-CMD ["./mvnw", "spring-boot:run"]
+FROM ibm-semeru-runtimes:open-17-jre-focal
+ADD target/barshelf-user.jar app.jar
+ENV PORT 8080
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/app.jar"]

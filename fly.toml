@@ -1,0 +1,15 @@
+# fly.toml app configuration file generated for barshelf-user on 2023-05-23T16:29:58-04:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "barshelf-user"
+primary_region = "ewr"
+[env]
+frontendUrl = "https://barshelf.netlify.app"
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
