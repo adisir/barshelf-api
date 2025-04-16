@@ -1,14 +1,17 @@
 package com.barshelf.user.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.sql.Date;
 
 @Data
 @Builder
@@ -26,7 +29,12 @@ public class BarshelfUser {
     private String lastName;
     @NotBlank(message = "Email is mandatory")
     private String email;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @NotBlank(message = "Password is mandatory")
     private String password;
+    private String role;
+    @JsonIgnore
+    @CreationTimestamp
+    private Date dateCreated;
 
 }
