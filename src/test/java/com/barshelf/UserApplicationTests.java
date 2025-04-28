@@ -1,4 +1,4 @@
-package com.barshelf.user;
+package com.barshelf;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

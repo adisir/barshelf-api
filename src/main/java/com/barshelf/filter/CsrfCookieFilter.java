@@ -1,4 +1,4 @@
-package com.barshelf.user.filter;
+package com.barshelf.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

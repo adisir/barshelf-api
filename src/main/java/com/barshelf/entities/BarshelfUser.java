@@ -1,4 +1,4 @@
-package com.barshelf.user.entities;
+package com.barshelf.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,9 +9,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 import java.sql.Date;
+import java.util.Set;
 
 @Data
 @Builder
@@ -36,5 +36,8 @@ public class BarshelfUser {
     @JsonIgnore
     @CreationTimestamp
     private Date dateCreated;
-
+    @ElementCollection
+    @CollectionTable(name = "user_ingredients", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "ingredient_name")
+    private Set<String> ingredients;
 }

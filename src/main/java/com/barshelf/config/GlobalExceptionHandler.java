@@ -1,4 +1,4 @@
-package com.barshelf.user.config;
+package com.barshelf.config;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<List<String>> handleValidationErrors(MethodArgumentNotValidException ex) {
         List<String> details = new ArrayList<>();
-        for (ObjectError error : ex.getBindingResult().getAllErrors()) {
+        for (ObjectError error : ex.getBindingResult()
+                .getAllErrors()) {
             details.add(error.getDefaultMessage());
         }
 
