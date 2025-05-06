@@ -24,7 +24,7 @@ public class JWTTokenGeneratorFilter extends OncePerRequestFilter {
                 .getAuthentication();
         if (authentication != null) {
             Environment env = getEnvironment();
-            String secret = env.getProperty(ApplicationConstants.JWT_SECRET, ApplicationConstants.JWT_SECRET_DEFAULT_VALUE);
+            String secret = env.getProperty(ApplicationConstants.JWT_SECRET);
             SecretKey secretKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
             String jwt = Jwts.builder()
                     .issuer("BarShelf")

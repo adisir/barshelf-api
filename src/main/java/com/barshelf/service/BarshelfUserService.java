@@ -50,4 +50,15 @@ public class BarshelfUserService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         return user.getIngredients();
     }
+    public String removeIngredientFromUserBarshelf(String email, String ingredientName) {
+        BarshelfUser user = barshelfUserRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        if (user.getIngredients().contains(ingredientName)) {
+            user.getIngredients().remove(ingredientName);
+            barshelfUserRepository.save(user);
+            return "Ingredient removed successfully";
+        } else {
+            return "Ingredient not found in the barshelf";
+        }
+    }
 }

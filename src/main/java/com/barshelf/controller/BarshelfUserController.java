@@ -72,6 +72,18 @@ public class BarshelfUserController {
         Set<String> barshelf = barshelfUserService.getUserBarshelf(email);
         return ResponseEntity.ok(barshelf);
     }
+    @DeleteMapping("/removeFromBarshelf")
+    public ResponseEntity<String> removeIngredientFromBarshelf(@RequestParam String ingredientName, Authentication authentication) {
+        String email = authentication.getName(); // Get authenticated user's email
+        String result = barshelfUserService.removeIngredientFromUserBarshelf(email, ingredientName);
+        if ("Ingredient removed successfully".equals(result)) {
+            return ResponseEntity.status(HttpStatus.OK).body(result);
+        } else if ("Ingredient not found in the barshelf".equals(result)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
+        }
+    }
     @GetMapping("/demo")
     public String demo() {
         return "Yipee";
