@@ -7,7 +7,7 @@ RUN mvn clean package -DskipTests
 
 # Stage 2: Run the JAR
 FROM eclipse-temurin:21-jre
-COPY --from=builder /build/target/barshelf-user.jar /app.jar
+COPY --from=builder /build/target/barshelf-api.jar /app.jar
 ENV PORT=8080
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/app.jar"]
