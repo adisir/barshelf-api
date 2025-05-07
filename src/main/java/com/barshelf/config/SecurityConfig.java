@@ -50,7 +50,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/demo", "/user", "/addToBarshelf", "/getBarshelf", "/removeFromBarshelf").authenticated()
                         .requestMatchers("/register", "/error").permitAll());
-        http.formLogin(withDefaults());
         http.httpBasic(withDefaults());
         return http.build();
     }
