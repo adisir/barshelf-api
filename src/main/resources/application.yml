@@ -16,3 +16,5 @@ logging:
     org.springframework.jdbc.datasource: DEBUG
     org.springframework.boot.autoconfigure.jdbc: DEBUG
     org.springframework.orm.jpa: DEBUG
+app:
+  jwtSecret: ${JWT_SECRET}

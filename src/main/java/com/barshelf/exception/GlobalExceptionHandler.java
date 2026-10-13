@@ -1,4 +1,4 @@
-package com.barshelf.config;
+package com.barshelf.exception;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -36,6 +36,6 @@ public class GlobalExceptionHandler {
     }
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleException(Exception ex) {
-        return new ResponseEntity<>("Invalid CSRF Token: " + ex.getMessage(), HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>("Exception: " + ex.getMessage(), HttpStatus.FORBIDDEN);
     }
 }
