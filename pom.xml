@@ -11,7 +11,7 @@
     <groupId>com.barshelf</groupId>
     <artifactId>barshelf-api</artifactId>
     <name>BarShelf</name>
-    <description>Barshelf that stores cocktail ingredients and users</description>
+    <description>BarShelf that stores cocktail ingredients and users</description>
     <properties>
         <java.version>25</java.version>
         <jjwt.version>0.13.0</jjwt.version>
@@ -75,6 +75,7 @@
         </dependency>
     </dependencies>
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
